@@ -1,0 +1,44 @@
+{% extends "Tattoo_App/base.html" %}
+
+
+{% block title %}
+
+<title>Home</title>
+{% load static %}
+<script src="{% static 'Tattoo_App/js/script.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+
+<div id="input-form-div">
+
+    <form method="post" action="{% url 'home' %}" id="input-form">
+        {% csrf_token %}
+        <label for="prompt">Enter Prompt:</label>
+        <input type="text" id="prompt" name="prompt" required placeholder="Describe your tattoo design">
+        <button type="submit">Generate Tattoo</button>
+        <button type="reset">Clear</button>
+    </form>
+</div>
+
+<div id="result-div">
+
+    {% if error_message %}
+    <h1>{{ error_message }}</h1>
+    {% else %}
+    <h2>Generated Tattoo Designs:</h2>
+    <div id="tattoo-container">
+        {% for image_url in image_url_list %}
+        <div class="tattoo-item">
+            <img src="{{ image_url }}" alt="Generated Tattoo Image">
+            <form action="{% url 'download' %}" method="get">
+                <input type="hidden" name="image_url" value="{{ image_url }}">
+                <button type="submit">Save</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
