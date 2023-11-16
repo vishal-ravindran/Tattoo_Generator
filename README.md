@@ -2,6 +2,10 @@
 
 A Tattoo Design Generator using Django and ChatGPT DALL-E Model
 
+## DEMO
+
+[![Watch the video](https://img.youtube.com/vi/https://youtu.be/-29OAd5Yh6g/0.jpg)](https://www.youtube.com/watch?v=https://youtu.be/-29OAd5Yh6g)
+
 ## Getting Started
 
 These instructions will help you set up a virtual environment and install project dependencies.
